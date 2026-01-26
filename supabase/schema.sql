@@ -7,6 +7,7 @@ create table public.categories (
   name text not null,
   slug text unique not null,
   image_url text,
+  show_on_home boolean default false,
   created_at timestamp with time zone default timezone('utc'::text, now()) not null
 );
 

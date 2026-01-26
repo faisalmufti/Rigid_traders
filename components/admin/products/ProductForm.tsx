@@ -273,7 +273,7 @@ export function ProductForm({ categories, initialData }: ProductFormProps) {
                                     <button
                                         type="button"
                                         onClick={() => removeImage(idx)}
-                                        className="absolute top-1 right-1 bg-red-600 text-white p-1 rounded-sm opacity-0 group-hover:opacity-100 transition-opacity hover:bg-red-500"
+                                        className="absolute top-1 right-1 bg-red-600 text-white p-1 rounded-sm opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity hover:bg-red-500"
                                     >
                                         <X size={12} />
                                     </button>

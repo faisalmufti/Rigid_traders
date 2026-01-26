@@ -32,19 +32,19 @@ export function HeroCarousel({ banners }: { banners: Banner[] }) {
                     className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${idx === current ? 'opacity-100 z-10' : 'opacity-0 z-0'
                         }`}
                 >
-                    <div className="absolute inset-0 bg-black/40 z-10" />
-                    <div className="absolute inset-0 bg-linear-to-r from-black via-black/50 to-transparent z-10" />
-                    <div className="absolute bottom-0 left-0 w-full h-32 bg-linear-to-t from-background to-transparent z-20" />
+                    <div className="absolute inset-0 bg-black/20 z-10" />
+                    <div className="absolute inset-0 bg-linear-to-r from-black via-black/20 to-transparent z-10" />
+                    <div className="absolute bottom-0 left-0 w-full h-44 bg-linear-to-t from-background to-transparent z-20" />
                     <img
                         src={banner.image_url}
                         alt="Hero Banner"
-                        className="w-full h-full object-cover transform scale-105"
+                        className="absolute right-0 w-full h-full object-cover bg-black object-center"
                     />
                     <div className="absolute inset-0 flex items-center justify-start z-20 pl-6 md:pl-20">
                         <div className="max-w-4xl space-y-6">
                             <div className="inline-flex items-center gap-2 border border-primary/30 bg-primary/10 backdrop-blur-sm px-4 py-1.5 rounded-full">
                                 <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
-                                <span className="text-primary text-xs font-bold uppercase tracking-[0.2em] italic font-mono">Ready.for.ride</span>
+                                <span className="text-primary text-xs font-bold uppercase tracking-[0.2em] italic font-mono">Ready for ride</span>
                             </div>
                             <h1 className="text-4xl md:text-8xl font-black italic tracking-tighter uppercase text-white leading-[0.9] drop-shadow-2xl font-heading">
                                 <span className="block text-primary transform -skew-x-12 origin-left">Precision</span>

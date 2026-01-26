@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { createClient } from '@/utils/supabase/server'
-import { Plus, Trash2 } from 'lucide-react'
+import { Plus, Trash2, Pencil } from 'lucide-react'
 import { deleteCategory } from './actions'
 
 export default async function CategoriesPage() {
@@ -38,18 +38,29 @@ export default async function CategoriesPage() {
                             <div className="flex items-center gap-2 mb-1">
                                 <span className="w-1.5 h-1.5 bg-primary rounded-full opacity-50 group-hover:opacity-100 transition-opacity"></span>
                                 <h3 className="font-bold text-lg text-white font-heading tracking-wide uppercase">{category.name}</h3>
+                                {category.show_on_home && (
+                                    <span className="text-[9px] bg-primary/20 text-primary px-2 py-0.5 rounded-sm font-bold uppercase tracking-wider">Home</span>
+                                )}
                             </div>
                             <p className="text-zinc-500 text-xs font-mono lowercase opacity-70">/{category.slug}</p>
                         </div>
 
-                        <form action={async () => {
-                            'use server';
-                            await deleteCategory(category.id)
-                        }}>
-                            <button className="p-2 text-zinc-600 hover:text-red-500 transition-colors hover:bg-zinc-800 rounded-sm">
-                                <Trash2 size={18} />
-                            </button>
-                        </form>
+                        <div className="flex items-center gap-1">
+                            <Link
+                                href={`/admin/categories/${category.id}/edit`}
+                                className="p-2 text-zinc-600 hover:text-primary transition-colors hover:bg-zinc-800 rounded-sm"
+                            >
+                                <Pencil size={18} />
+                            </Link>
+                            <form action={async () => {
+                                'use server';
+                                await deleteCategory(category.id)
+                            }}>
+                                <button className="p-2 text-zinc-600 hover:text-red-500 transition-colors hover:bg-zinc-800 rounded-sm">
+                                    <Trash2 size={18} />
+                                </button>
+                            </form>
+                        </div>
                     </div>
                 ))}
                 {categories?.length === 0 && (

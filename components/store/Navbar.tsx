@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
-import { ShoppingCart, Search, Menu, X, Loader2, ImageOff } from 'lucide-react'
+import { ShoppingCart, Search, Menu, X, Loader2 } from 'lucide-react'
 import { useCart } from '@/context/CartContext'
 import { usePathname, useRouter } from 'next/navigation'
 import { searchProducts } from '@/app/actions/search'
@@ -83,23 +83,24 @@ export function Navbar() {
     }
 
     return (
-        <header className="sticky top-0 z-50 w-full border-b border-white/10" style={{ backgroundColor: 'rgba(0, 0, 0, 0.4)', backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)' }}>
+        <header className="sticky top-0 z-100 w-full border-b border-white/10" style={{ backgroundColor: 'rgba(0, 0, 0, 0.4)', backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)' }}>
             <div className="container mx-auto px-6 h-20 flex items-center justify-between gap-4">
-                {/* Logo */}
                 <Link href="/" className="flex items-center gap-2 group shrink-0">
-                    <div className="relative">
+                    <div className="relative group-hover:scale-105 transition-transform duration-300">
                         <div className="absolute inset-0 bg-primary blur-md opacity-20 group-hover:opacity-40 transition-opacity rounded-lg"></div>
-                        <div className="relative w-10 h-10 bg-primary flex items-center justify-center rounded-lg text-white font-black text-xl tracking-tighter shadow-lg group-hover:scale-105 transition-transform duration-300 transform skew-x-[-10deg]">
-                            RT
-                        </div>
+                        <Image
+                            src="/rigid-logo.png"
+                            alt="Rigid Traders Logo"
+                            width={40}
+                            height={40}
+                            className="relative rounded-lg shadow-lg"
+                        />
                     </div>
                     <div className="flex flex-col">
                         <span className="text-xl font-bold tracking-tighter text-white leading-none font-heading uppercase">Rigid<span className="text-primary">Traders</span></span>
                         <span className="text-[10px] text-zinc-400 tracking-[0.2em] font-medium uppercase">Performance</span>
                     </div>
                 </Link>
-
-                {/* Desktop Nav */}
                 <nav className="hidden md:flex items-center gap-10 shrink-0">
                     {['Home', 'Store', 'Contact'].map((item) => {
                         const href = item === 'Home' ? '/' : `/${item.toLowerCase()}`
@@ -152,9 +153,12 @@ export function Navbar() {
                                                         className="object-cover group-hover:scale-110 transition-transform duration-500"
                                                     />
                                                 ) : (
-                                                    <div className="w-full h-full flex items-center justify-center text-zinc-700">
-                                                        <ImageOff size={16} />
-                                                    </div>
+                                                    <Image
+                                                        src="/no-image-placeholder.png"
+                                                        alt="No image"
+                                                        fill
+                                                        className="object-cover opacity-60"
+                                                    />
                                                 )}
                                             </div>
                                             <div className="flex-1 min-w-0">
@@ -237,9 +241,12 @@ export function Navbar() {
                                                         className="object-cover"
                                                     />
                                                 ) : (
-                                                    <div className="w-full h-full flex items-center justify-center text-zinc-700">
-                                                        <ImageOff size={12} />
-                                                    </div>
+                                                    <Image
+                                                        src="/no-image-placeholder.png"
+                                                        alt="No image"
+                                                        fill
+                                                        className="object-cover opacity-60"
+                                                    />
                                                 )}
                                             </div>
                                             <div className="flex-1 min-w-0">

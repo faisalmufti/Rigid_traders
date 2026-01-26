@@ -19,10 +19,6 @@ export function ProductCard({ product }: { product: ProductHeadingProps }) {
             href={`/product/${product.id}`}
             className="group relative bg-zinc-900 border border-zinc-800 overflow-hidden hover:border-primary/50 transition-all duration-300 flex flex-col h-full"
         >
-            {/* Tech Corner Accent */}
-            <div className="absolute top-0 right-0 w-12 h-12 bg-zinc-800/50 clip-path-corner z-10 group-hover:bg-primary transition-colors duration-300 flex items-center justify-center backdrop-blur-sm">
-            </div>
-
             <div className="aspect-square bg-zinc-950 relative overflow-hidden">
                 {/* Image Overlay Gradient */}
                 <div className="absolute inset-0 bg-linear-to-t from-black/80 to-transparent z-10 opacity-60 group-hover:opacity-40 transition-opacity" />
@@ -35,9 +31,12 @@ export function ProductCard({ product }: { product: ProductHeadingProps }) {
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out opacity-90 group-hover:opacity-100"
                     />
                 ) : (
-                    <div className="w-full h-full flex items-center justify-center text-zinc-700 font-mono text-xs uppercase tracking-widest bg-zinc-900">
-                        No Image
-                    </div>
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                        src="/no-image-placeholder.png"
+                        alt="No image available"
+                        className="w-full h-full object-cover opacity-60"
+                    />
                 )}
             </div>
 

@@ -26,7 +26,12 @@ export function ProductImageGallery({ images, title }: ProductImageGalleryProps)
                         className="object-cover w-full h-full opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out"
                     />
                 ) : (
-                    <div className="w-full h-full flex items-center justify-center text-zinc-700 font-mono text-sm uppercase tracking-widest">No Image Available</div>
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                        src="/no-image-placeholder.png"
+                        alt="No image available"
+                        className="object-cover w-full h-full opacity-60"
+                    />
                 )}
             </div>
 

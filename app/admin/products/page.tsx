@@ -95,9 +95,12 @@ export default async function ProductsPage({
                                                     className="w-10 h-10 object-cover rounded-sm border border-zinc-700 group-hover:border-primary transition-colors"
                                                 />
                                             ) : (
-                                                <div className="w-10 h-10 bg-zinc-800 rounded-sm border border-zinc-700 flex items-center justify-center text-zinc-600 font-mono text-[10px] uppercase">
-                                                    N/A
-                                                </div>
+                                                // eslint-disable-next-line @next/next/no-img-element
+                                                <img
+                                                    src="/no-image-placeholder.png"
+                                                    alt="No image"
+                                                    className="w-10 h-10 object-cover rounded-sm border border-zinc-700 opacity-60"
+                                                />
                                             )}
                                             <span className="group-hover:text-primary transition-colors font-bold tracking-tight">{product.title}</span>
                                         </div>

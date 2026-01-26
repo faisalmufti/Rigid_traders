@@ -15,6 +15,12 @@ export default async function HomePage() {
         .eq('active', true)
         .order('sort_order', { ascending: true })
 
+    const { data: homeCategories } = await supabase
+        .from('categories')
+        .select('id, name, slug')
+        .eq('show_on_home', true)
+        .limit(4)
+
     const { data: featuredProducts } = await supabase
         .from('products')
         .select('*, categories(name)')
@@ -47,20 +53,25 @@ export default async function HomePage() {
                 </div>
 
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                    {['Brakes', 'Suspension', 'Engine', 'Accessories'].map((cat) => (
+                    {homeCategories?.map((category) => (
                         <Link
-                            key={cat}
-                            href={`/store?q=${cat}`}
-                            className="group relative overflow-hidden rounded-none aspect-4/3 bg-zinc-900 border border-zinc-800 hover:border-primary/50 transition-all duration-300 flex items-center justify-center clip-path-slant"
+                            key={category.id}
+                            href={`/store?category=${category.slug}`}
+                            className="group relative overflow-hidden rounded-none aspect-4/3 bg-zinc-800/60 border border-zinc-700/70 hover:border-primary/50 transition-all duration-300 flex items-center justify-center clip-path-slant"
                         >
-                            <div className="absolute inset-0 bg-zinc-950/50 group-hover:bg-zinc-950/0 transition-colors duration-500" />
-                            <span className="text-xl md:text-2xl font-black text-white group-hover:text-primary group-hover:scale-110 transition-all duration-300 z-10 font-heading italic uppercase tracking-wider">{cat}</span>
+                            <div className="absolute inset-0 bg-zinc-900/40 group-hover:bg-transparent transition-colors duration-500" />
+                            <span className="text-xl md:text-2xl font-black text-white group-hover:text-primary group-hover:scale-110 transition-all duration-300 z-10 font-heading italic uppercase tracking-wider text-center px-2">{category.name}</span>
 
                             {/* Technical Corner Accents */}
                             <div className="absolute top-2 right-2 w-2 h-2 border-t border-r border-zinc-600 group-hover:border-primary transition-colors" />
                             <div className="absolute bottom-2 left-2 w-2 h-2 border-b border-l border-zinc-600 group-hover:border-primary transition-colors" />
                         </Link>
                     ))}
+                    {(!homeCategories || homeCategories.length === 0) && (
+                        <div className="col-span-full py-12 text-center text-zinc-400 font-mono text-sm uppercase">
+                            No categories available
+                        </div>
+                    )}
                 </div>
             </section>
 

@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { Facebook, Twitter, Instagram } from 'lucide-react'
 
 export function Footer() {
@@ -12,9 +13,13 @@ export function Footer() {
                     {/* Brand */}
                     <div className="space-y-6">
                         <Link href="/" className="flex items-center gap-2 group">
-                            <div className="w-8 h-8 bg-primary flex items-center justify-center rounded text-white font-black text-lg transform skew-x-[-10deg]">
-                                RT
-                            </div>
+                            <Image
+                                src="/rigid-logo.png"
+                                alt="Rigid Traders Logo"
+                                width={32}
+                                height={32}
+                                className="rounded"
+                            />
                             <span className="text-xl font-black text-white tracking-tighter uppercase font-heading italic">Rigid<span className="text-primary">Traders</span></span>
                         </Link>
                         <p className="text-zinc-500 text-sm leading-relaxed max-w-xs font-mono border-l-2 border-zinc-800 pl-4">
