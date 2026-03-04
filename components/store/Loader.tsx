@@ -1,5 +1,7 @@
 'use client'
 
+import Image from 'next/image'
+
 export default function Loader() {
     return (
         <div className="fixed inset-0 z-200 bg-background flex items-center justify-center">
@@ -13,9 +15,15 @@ export default function Loader() {
                     </div>
                 </div>
                 <div className="flex flex-col items-center gap-2">
-                    <span className="text-xl font-black text-white tracking-tighter uppercase font-heading italic">
-                        Rigid<span className="text-primary">Traders</span>
-                    </span>
+                    <div className="relative group-hover:scale-105 transition-transform duration-300">
+                        <Image
+                            src="/rigid-logo-full.png"
+                            alt="Rigid Traders Logo"
+                            width={160}
+                            height={40}
+                            className="relative drop-shadow-[0_0_15px_rgba(37,99,235,0.5)]"
+                        />
+                    </div>
                     <div className="flex items-center gap-1">
                         <span className="text-[10px] text-zinc-500 uppercase tracking-[0.3em] font-mono">Loading</span>
                         <span className="flex gap-1">

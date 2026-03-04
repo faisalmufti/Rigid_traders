@@ -1,6 +1,7 @@
 'use client'
 
 import { login, signup } from './actions'
+import Image from 'next/image'
 // import { useActionState } from 'react'
 
 export default function LoginPage() {
@@ -15,9 +16,13 @@ export default function LoginPage() {
             <div className="max-w-md w-full p-8 relative z-10">
                 <div className="mb-12 text-center">
                     <div className="w-16 h-16 bg-zinc-900 mx-auto rounded-sm border border-zinc-800 flex items-center justify-center mb-6 shadow-[0_0_20px_rgba(250,204,21,0.1)] group">
-                        <div className="w-8 h-8 bg-primary transform skew-x-[-10deg] flex items-center justify-center">
-                            <span className="font-black text-black">RT</span>
-                        </div>
+                        <Image
+                            src="/rigid-logo.png"
+                            alt="Rigid Traders Logo"
+                            width={40}
+                            height={40}
+                            className="rounded"
+                        />
                     </div>
                     <h1 className="text-4xl font-black text-white uppercase tracking-tighter font-heading italic">Admin <span className="text-primary">Panel</span></h1>
                     <p className="text-zinc-500 mt-2 text-xs uppercase tracking-widest">Sign in to continue</p>

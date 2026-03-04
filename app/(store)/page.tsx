@@ -14,6 +14,7 @@ export default async function HomePage() {
         .select('*')
         .eq('active', true)
         .order('sort_order', { ascending: true })
+        .limit(4)
 
     const { data: homeCategories } = await supabase
         .from('categories')

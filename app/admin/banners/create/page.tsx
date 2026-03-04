@@ -49,14 +49,14 @@ function BannerForm() {
     return (
         <form action={handleSubmit} className="space-y-8 max-w-lg relative z-10">
             <div className="space-y-4">
-                <label className="text-[10px] font-bold text-primary uppercase tracking-widest">Banner Visual Asset</label>
-                <div className="relative aspect-video bg-zinc-900 border border-dashed border-zinc-700 rounded-sm flex flex-col items-center justify-center hover:bg-zinc-800/50 hover:border-primary transition-all group cursor-pointer">
+                <label className="text-[10px] font-bold text-blue-400 uppercase tracking-widest">Banner Visual Asset</label>
+                <div className="relative aspect-video bg-zinc-900 border border-dashed border-zinc-700 rounded-xl flex flex-col items-center justify-center hover:bg-blue-500/5 hover:border-blue-500 hover:shadow-[0_0_15px_rgba(59,130,246,0.1)] transition-all group cursor-pointer shadow-inner">
                     {imageUrl ? (
                         // eslint-disable-next-line @next/next/no-img-element
-                        <img src={imageUrl} alt="Preview" className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" />
+                        <img src={imageUrl} alt="Preview" className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity rounded-xl" />
                     ) : (
                         <div className="text-center p-6">
-                            {uploading ? <Loader2 className="animate-spin text-primary mx-auto" /> : <Upload className="text-zinc-600 group-hover:text-primary mx-auto mb-2 transition-colors" />}
+                            {uploading ? <Loader2 className="animate-spin text-blue-500 mx-auto" /> : <Upload className="text-zinc-600 group-hover:text-blue-500 mx-auto mb-2 transition-colors" />}
                             <span className="text-[10px] text-zinc-500 uppercase tracking-widest font-bold group-hover:text-white transition-colors">Click to upload signal</span>
                         </div>
                     )}
@@ -66,12 +66,12 @@ function BannerForm() {
             </div>
 
             <div className="space-y-3">
-                <label className="text-[10px] font-bold text-primary uppercase tracking-widest">Sequence Priority (Sort Order)</label>
+                <label className="text-[10px] font-bold text-blue-400 uppercase tracking-widest">Sequence Priority (Sort Order)</label>
                 <input
                     type="number"
                     name="sort_order"
                     defaultValue={0}
-                    className="flex h-12 w-full rounded-sm border border-zinc-800 bg-zinc-950 px-4 py-2 text-white placeholder:text-zinc-600 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/50 transition-all font-mono text-sm"
+                    className="flex h-12 w-full rounded-xl border border-zinc-800/80 bg-zinc-950/50 px-4 py-2 text-white placeholder:text-zinc-600 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500/50 transition-all font-mono text-sm shadow-inner hover:border-zinc-700 backdrop-blur-sm"
                 />
             </div>
 
@@ -80,7 +80,7 @@ function BannerForm() {
                     type="checkbox"
                     name="active"
                     defaultChecked
-                    className="h-5 w-5 rounded border-zinc-700 bg-zinc-900 text-primary focus:ring-primary focus:ring-offset-zinc-900"
+                    className="h-5 w-5 rounded border-zinc-700 bg-zinc-900 text-blue-500 focus:ring-blue-500 focus:ring-offset-zinc-900"
                 />
                 <label className="text-sm font-bold text-white uppercase tracking-wider">System Active Status</label>
             </div>
@@ -88,7 +88,7 @@ function BannerForm() {
             <button
                 type="submit"
                 disabled={!imageUrl || uploading}
-                className="bg-primary text-black font-black uppercase tracking-wider px-10 py-4 rounded-sm hover:bg-white hover:shadow-[0_0_20px_rgba(255,255,255,0.4)] transition-all flex items-center gap-2 clip-path-slant disabled:opacity-50 disabled:cursor-not-allowed shadow-[0_0_10px_rgba(250,204,21,0.3)]"
+                className="bg-blue-600 text-white font-black uppercase tracking-wider px-10 py-4 rounded-xl hover:bg-blue-500 hover:shadow-[0_0_20px_rgba(59,130,246,0.4)] transition-all flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed border border-blue-400/20"
             >
                 Deploy Banner Unit
             </button>
@@ -99,12 +99,13 @@ function BannerForm() {
 export default function CreateBannerPage() {
     return (
         <div className="space-y-6">
-            <h1 className="text-3xl font-black text-white tracking-tighter uppercase font-heading italic">System Configuration <span className="text-zinc-600">/ Add Banner</span></h1>
+            <h1 className="text-3xl md:text-4xl font-black text-transparent bg-clip-text bg-linear-to-r from-white to-zinc-500 tracking-tighter uppercase font-heading italic">System Configuration <span className="text-blue-500">/ Add Banner</span></h1>
 
-            <div className="bg-zinc-900/40 border border-zinc-800 p-8 rounded-sm backdrop-blur-md relative overflow-hidden">
+            <div className="bg-zinc-900/60 border border-zinc-800 p-8 rounded-2xl backdrop-blur-xl relative overflow-hidden shadow-2xl">
                 {/* Tech Overlay Lines */}
-                <div className="absolute top-0 left-0 w-full h-px bg-linear-to-r from-transparent via-primary/20 to-transparent"></div>
-                <div className="absolute bottom-0 right-0 w-24 h-24 bg-primary/5 blur-3xl rounded-full"></div>
+                <div className="absolute top-0 left-0 w-full h-px bg-linear-to-r from-transparent via-blue-500/40 to-transparent"></div>
+                <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-blue-500/10 blur-3xl rounded-full pointer-events-none"></div>
+                <div className="absolute -top-20 -left-20 w-64 h-64 bg-indigo-500/5 blur-3xl rounded-full pointer-events-none"></div>
 
                 <BannerForm />
             </div>

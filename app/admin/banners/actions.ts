@@ -40,3 +40,12 @@ export async function toggleBannerStatus(id: string, currentStatus: boolean) {
     revalidatePath('/admin/banners')
     return { success: true }
 }
+
+export async function updateBannerOrder(id: string, newOrder: number) {
+    const supabase = await createClient()
+    const { error } = await supabase.from('banners').update({ sort_order: newOrder }).eq('id', id)
+    if (error) return { error: error.message }
+    revalidatePath('/admin/banners')
+    revalidatePath('/')
+    return { success: true }
+}

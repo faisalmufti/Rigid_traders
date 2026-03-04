@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { createClient } from '@/utils/supabase/server'
 import { Plus, Trash2, Eye, EyeOff } from 'lucide-react'
-import { deleteBanner, toggleBannerStatus } from './actions'
+import { deleteBanner, toggleBannerStatus, updateBannerOrder } from './actions'
 
 export default async function BannersPage() {
     const supabase = await createClient()
@@ -37,8 +37,20 @@ export default async function BannersPage() {
                         <div className="relative aspect-video rounded-sm overflow-hidden bg-zinc-950 border border-zinc-800">
                             {/* eslint-disable-next-line @next/next/no-img-element */}
                             <img src={banner.image_url} alt="Banner" className="object-cover w-full h-full opacity-80 group-hover:opacity-100 transition-opacity" />
-                            <div className="absolute top-2 right-2 px-2 py-0.5 bg-black/70 backdrop-blur text-white text-[10px] uppercase font-bold tracking-wider rounded-sm border border-white/10">
-                                Priority: {banner.sort_order}
+                            <div className="absolute top-2 right-2 bg-black/70 backdrop-blur rounded-sm border border-white/10 p-1">
+                                <form action={async (formData) => {
+                                    'use server';
+                                    await updateBannerOrder(banner.id, Number(formData.get('sort_order')));
+                                }} className="flex items-center gap-1">
+                                    <label className="text-[10px] uppercase font-bold text-white px-1">Pos</label>
+                                    <input
+                                        type="number"
+                                        name="sort_order"
+                                        defaultValue={banner.sort_order}
+                                        className="w-12 h-6 bg-zinc-900 border border-zinc-700 text-white text-xs px-1 text-center font-mono focus:border-primary focus:outline-none"
+                                    />
+                                    <button type="submit" className="text-[10px] bg-primary text-black px-2 py-1 font-bold rounded-sm hover:bg-white transition-colors cursor-pointer">Set</button>
+                                </form>
                             </div>
                         </div>
 

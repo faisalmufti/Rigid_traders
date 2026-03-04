@@ -89,16 +89,12 @@ export function Navbar() {
                     <div className="relative group-hover:scale-105 transition-transform duration-300">
                         <div className="absolute inset-0 bg-primary blur-md opacity-20 group-hover:opacity-40 transition-opacity rounded-lg"></div>
                         <Image
-                            src="/rigid-logo.png"
+                            src="/rigid-logo-full.png"
                             alt="Rigid Traders Logo"
-                            width={40}
+                            width={160}
                             height={40}
-                            className="relative rounded-lg shadow-lg"
+                            className="relative drop-shadow-[0_0_15px_rgba(37,99,235,0.5)]"
                         />
-                    </div>
-                    <div className="flex flex-col">
-                        <span className="text-xl font-bold tracking-tighter text-white leading-none font-heading uppercase">Rigid<span className="text-primary">Traders</span></span>
-                        <span className="text-[10px] text-zinc-400 tracking-[0.2em] font-medium uppercase">Performance</span>
                     </div>
                 </Link>
                 <nav className="hidden md:flex items-center gap-10 shrink-0">

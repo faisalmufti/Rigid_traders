@@ -12,15 +12,14 @@ export function Footer() {
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
                     {/* Brand */}
                     <div className="space-y-6">
-                        <Link href="/" className="flex items-center gap-2 group">
+                        <Link href="/" className="flex items-center gap-2 group transition-transform duration-300 hover:scale-105 origin-left">
                             <Image
-                                src="/rigid-logo.png"
+                                src="/rigid-logo-full.png"
                                 alt="Rigid Traders Logo"
-                                width={32}
-                                height={32}
-                                className="rounded"
+                                width={160}
+                                height={40}
+                                className="drop-shadow-[0_0_15px_rgba(37,99,235,0.5)] group-hover:drop-shadow-[0_0_25px_rgba(37,99,235,0.8)] transition-all duration-300"
                             />
-                            <span className="text-xl font-black text-white tracking-tighter uppercase font-heading italic">Rigid<span className="text-primary">Traders</span></span>
                         </Link>
                         <p className="text-zinc-500 text-sm leading-relaxed max-w-xs font-mono border-l-2 border-zinc-800 pl-4">
                             ENGINEERED FOR PERFORMANCE.<br />

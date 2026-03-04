@@ -10,7 +10,7 @@ export default function AdminLayout({
     return (
         <div className="min-h-screen bg-zinc-950 text-foreground">
             <AdminSidebar />
-            <main className="md:pl-64 min-h-screen">
+            <main className="md:pl-72 min-h-screen">
                 <div className="container mx-auto p-4 md:p-8 relative">
                     {/* Background Grid for Admin Area */}
                     <div className="fixed inset-0 z-0 text-zinc-900 pointer-events-none opacity-20">
